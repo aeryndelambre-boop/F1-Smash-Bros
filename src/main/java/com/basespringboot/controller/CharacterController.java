@@ -18,7 +18,7 @@ public class CharacterController {
         this.characterRepository = characterRepository;
     }
 
-    @PostMapping ("/characters")
+    @PostMapping
     public CharacterEntity ajouter(@RequestBody CharacterRequest dto) {
         CharacterEntity character = new CharacterEntity();
         character.setCategory(dto.getCategory());
