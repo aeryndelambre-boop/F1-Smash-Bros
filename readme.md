@@ -1,5 +1,7 @@
 # Travail fait par Delambre Aeryn et Fournier Nathan
 
+# Board accesible avec ce lien : https://github.com/users/Weamix/projects/5/views/2
+
 # baseSpringBoot
 
 A Spring Boot application using Java 21, Maven, and PostgreSQL. Docker Compose starts the application and its database together.
