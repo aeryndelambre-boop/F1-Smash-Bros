@@ -7,6 +7,9 @@ import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
+import jakarta.persistence.OneToMany;
+import java.util.ArrayList;
+import java.util.List;
 
 @RequiredArgsConstructor 
 @Entity 
@@ -22,4 +25,7 @@ public class CharacterEntity {
     private String licenceTeam;
     private int age;
     private String description;
+
+    @OneToMany(mappedBy = "pilote")
+    private List<CarsEntity> cars = new ArrayList<>();
 }
