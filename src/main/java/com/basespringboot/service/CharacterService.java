@@ -2,17 +2,18 @@ package com.basespringboot.service;
 
 import org.springframework.stereotype.Service;
 import com.basespringboot.repository.CharacterRepository;
+
+import lombok.AllArgsConstructor;
+
 import com.basespringboot.entity.CharacterEntity;
 import com.basespringboot.dto.CharacterRequest;
 
+
 @Service
+@AllArgsConstructor 
 public class CharacterService {
 
     private final CharacterRepository characterRepository;
-
-    public CharacterService(CharacterRepository characterRepository) {
-        this.characterRepository = characterRepository;
-    }
 
     public CharacterEntity ajouter(CharacterRequest dto) {
         CharacterEntity character = new CharacterEntity();
