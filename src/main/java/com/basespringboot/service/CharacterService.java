@@ -29,4 +29,32 @@ public class CharacterService {
     public List<CharacterEntity> getAllCharacters() {
         return characterRepository.findAll();
     }
+
+    public CharacterEntity update(CharacterRequest dto) {
+        CharacterEntity character = characterRepository.findAll().stream()
+            .filter(existing -> existing.getName().equals(dto.getName()))
+            .findFirst()
+            .orElse(null);
+        if (character != null) {
+            character.setCategory(dto.getCategory());
+            character.setLicenceTeam(dto.getLicenceTeam());
+            character.setAge(dto.getAge());
+            character.setDescription(dto.getDescription());
+            return characterRepository.save(character);
+        } else {
+            throw new RuntimeException("Character not found");
+        }
+    }
+
+    public void delete(CharacterRequest dto) {
+        CharacterEntity character = characterRepository.findAll().stream()
+            .filter(existing -> existing.getName().equals(dto.getName()))
+            .findFirst()
+            .orElse(null);
+        if (character != null) {
+            characterRepository.delete(character);
+        } else {
+            throw new RuntimeException("Character not found");
+        }
+    }
 }

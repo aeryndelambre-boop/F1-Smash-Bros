@@ -1,7 +1,9 @@
 package com.basespringboot.controller;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,5 +30,15 @@ public class CharacterController {
     @GetMapping
     public List<CharacterEntity> getAllCharacters() {
         return characterService.getAllCharacters();
+    }
+
+    @PutMapping
+    public CharacterEntity update(@RequestBody CharacterRequest dto) {
+        return characterService.update(dto);
+    }
+
+    @DeleteMapping
+    public void delete(@RequestBody CharacterRequest dto) {
+        characterService.delete(dto);
     }
 }
