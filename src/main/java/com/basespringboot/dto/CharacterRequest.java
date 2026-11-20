@@ -2,6 +2,8 @@ package com.basespringboot.dto;
 
 import jakarta.validation.constraints.NotBlank;
 
+@Getter 
+@Setter
 public class CharacterRequest {
     
     @NotBlank 
