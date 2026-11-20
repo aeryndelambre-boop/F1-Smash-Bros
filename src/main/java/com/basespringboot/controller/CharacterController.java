@@ -1,5 +1,6 @@
 package com.basespringboot.controller;
 
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -7,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.basespringboot.service.CharacterService;
 import com.basespringboot.entity.CharacterEntity;
 import com.basespringboot.dto.CharacterRequest;
+import java.util.List;
 
 @RestController
 @RequestMapping("/characters")
@@ -19,7 +21,12 @@ public class CharacterController {
     }
 
     @PostMapping
-    public CharacterEntity ajouter(@RequestBody CharacterRequest dto) {
-        return characterService.ajouter(dto);
+    public CharacterEntity add(@RequestBody CharacterRequest dto) {
+        return characterService.add(dto);
+    }
+
+    @GetMapping
+    public List<CharacterEntity> getAllCharacters() {
+        return characterService.getAllCharacters();
     }
 }

@@ -7,7 +7,7 @@ import lombok.AllArgsConstructor;
 
 import com.basespringboot.entity.CharacterEntity;
 import com.basespringboot.dto.CharacterRequest;
-
+import java.util.List;
 
 @Service
 @AllArgsConstructor 
@@ -15,7 +15,7 @@ public class CharacterService {
 
     private final CharacterRepository characterRepository;
 
-    public CharacterEntity ajouter(CharacterRequest dto) {
+    public CharacterEntity add(CharacterRequest dto) {
         CharacterEntity character = new CharacterEntity();
         character.setCategory(dto.getCategory());
         character.setName(dto.getName());
@@ -24,5 +24,9 @@ public class CharacterService {
         character.setDescription(dto.getDescription());
 
         return characterRepository.save(character);
+    }
+
+    public List<CharacterEntity> getAllCharacters() {
+        return characterRepository.findAll();
     }
 }
