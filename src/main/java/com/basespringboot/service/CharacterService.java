@@ -30,31 +30,27 @@ public class CharacterService {
         return characterRepository.findAll();
     }
 
-    public CharacterEntity update(CharacterRequest dto) {
+    public CharacterEntity update(String name, CharacterRequest dto) {
         CharacterEntity character = characterRepository.findAll().stream()
-            .filter(existing -> existing.getName().equals(dto.getName()))
+            .filter(existing -> existing.getName().equals(name))
             .findFirst()
-            .orElse(null);
-        if (character != null) {
-            character.setCategory(dto.getCategory());
-            character.setLicenceTeam(dto.getLicenceTeam());
-            character.setAge(dto.getAge());
-            character.setDescription(dto.getDescription());
-            return characterRepository.save(character);
-        } else {
-            throw new RuntimeException("Character not found");
-        }
+            .orElseThrow(() -> new RuntimeException("Character not found"));
+
+        character.setCategory(dto.getCategory());
+        character.setName(dto.getName());
+        character.setLicenceTeam(dto.getLicenceTeam());
+        character.setAge(dto.getAge());
+        character.setDescription(dto.getDescription());
+
+        return characterRepository.save(character);
     }
 
-    public void delete(CharacterRequest dto) {
+    public void delete(String name) {
         CharacterEntity character = characterRepository.findAll().stream()
-            .filter(existing -> existing.getName().equals(dto.getName()))
+            .filter(existing -> existing.getName().equals(name))
             .findFirst()
-            .orElse(null);
-        if (character != null) {
-            characterRepository.delete(character);
-        } else {
-            throw new RuntimeException("Character not found");
-        }
+            .orElseThrow(() -> new RuntimeException("Character not found"));
+
+        characterRepository.delete(character);
     }
 }
