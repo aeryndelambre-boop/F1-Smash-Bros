@@ -11,8 +11,7 @@ import lombok.Setter;
 @RequiredArgsConstructor 
 @Entity 
 @Getter 
-@Setter 
-
+@Setter
 public class CharacterEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
